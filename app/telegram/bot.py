@@ -2,6 +2,8 @@ import os
 import telegram
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+from dotenv import load_dotenv
+load_dotenv()
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
@@ -11,6 +13,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("👋 Welcome to Smart Finance Bot!\nUse /add to log expenses.")
 
 application.add_handler(CommandHandler("start", start))
+
+async def init_bot():
+    await application.initialize()
+
+async def shutdown_bot():
+    await application.shutdown()
 
 async def telegram_webhook(request):
     data = await request.json()

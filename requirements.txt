@@ -13,3 +13,4 @@ matplotlib
 openai  # optional for AI tips
 pytest
 pytest-asyncio
+python-dotenv
