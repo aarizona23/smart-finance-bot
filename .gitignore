@@ -1,0 +1,9 @@
+.idea
+*.xml
+*.iml
+.venv
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

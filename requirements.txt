@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-telegram-bot[asyncio]
+sqlalchemy
+asyncpg
+alembic
+pydantic
+python-dotenv
+celery
+redis
+httpx
+matplotlib
+openai  # optional for AI tips
+pytest
+pytest-asyncio
