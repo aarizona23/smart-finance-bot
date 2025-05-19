@@ -1,18 +1,23 @@
-import os
 import telegram
-from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes
+from telegram.ext import Application, CommandHandler
+from app.handlers import *
+import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 application = Application.builder().token(BOT_TOKEN).build()
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("👋 Welcome to Smart Finance Bot!\nUse /add to log expenses.")
-
 application.add_handler(CommandHandler("start", start))
+application.add_handler(CommandHandler("add_expense", add_expense))
+application.add_handler(CommandHandler("add_income", add_income))
+application.add_handler(CommandHandler("remove", remove))
+application.add_handler(CommandHandler("calculate", calculate))
+application.add_handler(CommandHandler("help", help_command))
+application.add_handler(CommandHandler("news", news))
+application.add_handler(CommandHandler("get_AI_advice", get_ai_advice))
 
 async def init_bot():
     await application.initialize()
